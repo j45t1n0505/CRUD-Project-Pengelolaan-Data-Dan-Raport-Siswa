@@ -263,7 +263,11 @@ $users = mysqli_query($koneksi, "SELECT id, username, name, role, created_at FRO
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control" required>
+                                <input type="password" name="password" class="form-control password-input" required>
+                                <div class="form-check mt-1">
+                                    <input class="form-check-input" type="checkbox" id="showPasswordManage">
+                                    <label class="form-check-label" for="showPasswordManage">Tampilkan password</label>
+                                </div>
                                 <small class="text-muted">Minimal 6 karakter</small>
                             </div>
                         </div>
@@ -328,5 +332,16 @@ $users = mysqli_query($koneksi, "SELECT id, username, name, role, created_at FRO
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var chk = document.getElementById('showPasswordManage');
+        if (chk) {
+            chk.addEventListener('change', function(){
+                var p = document.querySelector('input.password-input[name="password"]');
+                if (p) p.type = this.checked ? 'text' : 'password';
+            });
+        }
+    });
+    </script>
 </body>
 </html>

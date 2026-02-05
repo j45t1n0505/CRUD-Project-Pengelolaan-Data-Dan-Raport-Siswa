@@ -57,7 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="mb-3">
                 <label class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" required>
+                <input type="password" name="password" class="form-control password-input" required>
+                <div class="form-check mt-1">
+                    <input class="form-check-input" type="checkbox" id="showPasswordLogin">
+                    <label class="form-check-label" for="showPasswordLogin">Tampilkan password</label>
+                </div>
             </div>
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary">Login</button>
@@ -67,4 +71,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <small class="text-muted">Gunakan akun admin default jika baru install: <strong>admin / admin123</strong>. Jalankan <code>setup_users.php</code> jika belum membuat tabel users.</small>
     </div>
 </body>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    var chk = document.getElementById('showPasswordLogin');
+    if (chk) {
+        chk.addEventListener('change', function(){
+            var p = document.querySelector('input.password-input[name="password"]');
+            if (p) p.type = this.checked ? 'text' : 'password';
+        });
+    }
+});
+</script>
 </html>

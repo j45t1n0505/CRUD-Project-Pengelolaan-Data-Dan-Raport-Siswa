@@ -174,18 +174,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="post">
             <div class="mb-3">
                 <label class="form-label">Password Lama</label>
-                <input type="password" name="old_password" class="form-control" required>
+                <input type="password" name="old_password" class="form-control password-input" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Password Baru</label>
-                <input type="password" name="new_password" class="form-control" required>
+                <input type="password" name="new_password" class="form-control password-input" required>
                 <small class="text-muted">Minimal 6 karakter</small>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Konfirmasi Password Baru</label>
-                <input type="password" name="confirm_password" class="form-control" required>
+                <input type="password" name="confirm_password" class="form-control password-input" required>
+            </div>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="showPasswordChange">
+                <label class="form-check-label" for="showPasswordChange">Tampilkan password</label>
             </div>
 
             <button type="submit" class="btn btn-primary">
@@ -200,3 +205,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </body>
 </html>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    var chk = document.getElementById('showPasswordChange');
+    if (chk) {
+        chk.addEventListener('change', function(){
+            document.querySelectorAll('input.password-input').forEach(function(el){
+                el.type = chk.checked ? 'text' : 'password';
+            });
+        });
+    }
+});
+</script>
