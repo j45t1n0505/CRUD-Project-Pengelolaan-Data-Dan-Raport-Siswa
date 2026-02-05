@@ -73,22 +73,32 @@ if (isset($_POST['simpan'])) {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        body {
+            background: #0d0d0d;
+            min-height: 100vh;
+            padding: 2rem 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
         .card {
-            animation: slideUp 0.6s ease-out;
-            border: none;
+            animation: neonPop 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            border: 2px solid #ff003c;
             border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 40px 5px #ff003c, 0 0 80px 10px #ff003c44;
             overflow: hidden;
             max-width: 600px;
             margin: 2rem auto;
             backdrop-filter: blur(10px);
+            background: rgba(20, 0, 0, 0.95);
         }
 
         .card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            background: #ff003c;
             padding: 2rem;
             border: none;
             animation: fadeIn 0.6s ease-out;
+            box-shadow: 0 0 10px #ff003c99;
         }
 
         .card-header h4 {
@@ -98,12 +108,15 @@ if (isset($_POST['simpan'])) {
             display: flex;
             align-items: center;
             gap: 0.8rem;
+            color: #fff;
+            text-shadow: 0 0 8px rgba(0,0,0,0.3);
         }
 
         .card-body {
             padding: 2.5rem;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(20, 0, 0, 0.95);
             animation: fadeIn 0.6s ease-out 0.2s backwards;
+            border-top: 2px solid #ff003c;
         }
 
         .mb-3 {
@@ -116,24 +129,31 @@ if (isset($_POST['simpan'])) {
 
         label {
             font-weight: 600;
-            color: #555;
+            color: #ff003c;
             margin-bottom: 0.7rem;
             display: block;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            text-shadow: 0 0 6px #ff003c99;
+            letter-spacing: 0.5px;
         }
 
         .form-control, .form-select {
-            border: 2px solid #e0e0e0;
+            border: 2px solid #ff003c;
             border-radius: 8px;
             padding: 0.8rem 1rem;
             font-size: 1rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: #1a000a;
+            color: #fff;
+            box-shadow: 0 0 10px #ff003c33 inset;
         }
 
         .form-control:focus, .form-select:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
-            transform: translateY(-2px);
+            border-color: #fff;
+            box-shadow: 0 0 0 0.2rem #ff003c99, 0 0 10px #ff003c99;
+            transform: scale(1.03) translateY(-2px);
+            background-color: #2a001a;
+            color: #fff;
         }
 
         .row {
@@ -146,38 +166,41 @@ if (isset($_POST['simpan'])) {
 
         .mapel-section {
             animation: formSlide 0.6s ease-out 0.4s backwards;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            background: rgba(255, 0, 60, 0.1);
             padding: 1.5rem;
             border-radius: 10px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #ff003c;
             max-height: 600px;
             overflow-y: auto;
             margin-bottom: 1.5rem;
+            box-shadow: 0 0 10px #ff003c33;
         }
 
         .mapel-item {
-            background: white;
+            background: rgba(20, 0, 0, 0.7);
             padding: 1.5rem;
             border-radius: 10px;
             margin-bottom: 1.5rem;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #ff003c;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 0 10px #ff003c33;
         }
 
         .mapel-item:hover {
-            border-color: #667eea;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+            border-color: #fff;
+            box-shadow: 0 0 20px #ff003c99;
+            transform: scale(1.02);
         }
 
         .mapel-title {
             font-weight: 700;
-            color: #667eea;
+            color: #ff003c;
             font-size: 1.1rem;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            text-shadow: 0 0 6px #ff003c99;
         }
 
         .mapel-inputs {
@@ -209,7 +232,7 @@ if (isset($_POST['simpan'])) {
 
         .btn {
             padding: 0.9rem 1.8rem;
-            font-weight: 600;
+            font-weight: 700;
             border: none;
             border-radius: 8px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -218,6 +241,10 @@ if (isset($_POST['simpan'])) {
             text-align: center;
             position: relative;
             overflow: hidden;
+            background: #ff003c;
+            color: #fff;
+            box-shadow: 0 0 20px #ff003c99, 0 0 40px #ff003c33;
+            text-shadow: 0 0 8px #fff, 0 0 20px #ff003c;
         }
 
         .btn::before {
@@ -228,7 +255,8 @@ if (isset($_POST['simpan'])) {
             width: 0;
             height: 0;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
+            background: #ff003c55;
+            box-shadow: 0 0 40px #ff003c, 0 0 80px #ff003c99;
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
             z-index: 1;
@@ -237,6 +265,7 @@ if (isset($_POST['simpan'])) {
         .btn:hover::before {
             width: 300px;
             height: 300px;
+            filter: blur(8px);
         }
 
         .btn > * {
@@ -245,53 +274,80 @@ if (isset($_POST['simpan'])) {
         }
 
         .btn-success {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            background: #11998e;
             color: white;
+            box-shadow: 0 0 20px #11998e99;
         }
 
         .btn-success:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(17, 153, 142, 0.4);
+            transform: scale(1.07) translateY(-3px);
+            box-shadow: 0 0 40px #11998e, 0 0 80px #11998e99;
         }
 
         .btn-secondary {
-            background: linear-gradient(135deg, #a8a8a8 0%, #6c6c6c 100%);
-            color: white;
+            background: #1a000a;
+            color: #ff003c;
+            border: 1.5px solid #ff003c;
+            box-shadow: 0 0 10px #ff003c44;
         }
 
         .btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(168, 168, 168, 0.4);
+            transform: scale(1.07) translateY(-3px);
+            background: #ff003c;
+            color: #fff;
+            box-shadow: 0 0 40px #ff003c, 0 0 80px #ff003c99;
+        }
+
+        @keyframes neonPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) rotate(-10deg);
+                box-shadow: 0 0 0 #ff003c00;
+            }
+            80% {
+                opacity: 1;
+                transform: scale(1.05) rotate(2deg);
+                box-shadow: 0 0 80px #ff003c, 0 0 120px #ff003c99;
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+                box-shadow: 0 0 40px #ff003c, 0 0 80px #ff003c44;
+            }
         }
 
         @keyframes slideUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(30px) scale(0.95);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                filter: blur(8px);
             }
             to {
                 opacity: 1;
+                filter: blur(0);
             }
         }
 
         @keyframes formSlide {
             from {
                 opacity: 0;
-                transform: translateX(-20px);
+                transform: translateX(-40px) scale(0.95) skewY(-2deg);
+                filter: blur(8px);
             }
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: translateX(0) scale(1) skewY(0deg);
+                filter: blur(0);
             }
         }
 
@@ -320,7 +376,7 @@ if (isset($_POST['simpan'])) {
 </head>
 <body>
     <div class="card">
-        <div class="card-header bg-primary text-white">
+        <div class="card-header">
             <h4><i class="fas fa-pen-fancy"></i> Form Input Nilai Siswa</h4>
         </div>
         <div class="card-body">

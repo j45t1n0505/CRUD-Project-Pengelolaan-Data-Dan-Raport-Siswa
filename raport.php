@@ -28,21 +28,23 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0d0d0d;
             min-height: 100vh;
             padding: 2rem 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
         }
 
         .raport-container {
-            animation: slideUp 0.6s ease-out;
-            background: rgba(255, 255, 255, 0.95);
+            animation: neonPop 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            background: rgba(20, 0, 0, 0.95);
             border-radius: 15px;
             padding: 3rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 40px 5px #ff003c, 0 0 80px 10px #ff003c44;
             backdrop-filter: blur(10px);
             max-width: 900px;
             margin: 2rem auto;
+            border: 2px solid #ff003c;
         }
 
         .header-raport {
@@ -52,31 +54,36 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
         }
 
         .header-raport h2 {
-            color: #333;
+            color: #ff003c;
             font-weight: 700;
             font-size: 2rem;
             margin-bottom: 0.5rem;
+            text-shadow: 0 0 8px #ff003c, 0 0 20px #ff003c99;
         }
 
         .header-raport h5 {
-            color: #666;
+            color: #ff003c;
             font-weight: 600;
             margin: 0;
+            text-shadow: 0 0 6px #ff003c99;
         }
 
         hr {
-            border: 3px solid #667eea;
-            opacity: 0.3;
+            border: 2px solid #ff003c;
+            opacity: 0.5;
             margin: 2rem 0;
             animation: fadeIn 0.8s ease-out 0.1s backwards;
+            box-shadow: 0 0 10px #ff003c99;
         }
 
         .student-info {
             animation: slideIn 0.6s ease-out 0.15s backwards;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: rgba(255, 0, 60, 0.1);
             padding: 2rem;
             border-radius: 12px;
             margin-bottom: 2rem;
+            border-left: 4px solid #ff003c;
+            box-shadow: 0 0 10px #ff003c33;
         }
 
         .student-info table {
@@ -90,13 +97,15 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
 
         .student-info td:first-child {
             font-weight: 700;
-            color: #555;
+            color: #ff003c;
             width: 150px;
+            text-shadow: 0 0 6px #ff003c99;
         }
 
         .student-info strong {
-            color: #667eea;
+            color: #ff003c;
             font-size: 1.1rem;
+            text-shadow: 0 0 6px #ff003c99;
         }
 
         /* Table Animations */
@@ -111,16 +120,17 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
         }
 
         .table thead {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: rgba(255, 0, 60, 0.1);
             animation: fadeIn 0.6s ease-out;
         }
 
         .table thead th {
             border: none;
-            color: white;
+            color: #ff003c;
             font-weight: 700;
             padding: 1.2rem 0.8rem;
             text-align: center;
+            text-shadow: 0 0 6px #ff003c99;
         }
 
         .table tbody tr {
@@ -136,9 +146,9 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
         .table tbody tr:nth-child(n+5) { animation-delay: 0.55s; }
 
         .table tbody tr:hover {
-            background-color: #f0f4ff;
+            background-color: rgba(255, 0, 60, 0.1);
             transform: scale(1.01);
-            box-shadow: inset 0 0 15px rgba(102, 126, 234, 0.1);
+            box-shadow: inset 0 0 15px rgba(255, 0, 60, 0.2);
         }
 
         .table tbody td {
@@ -149,7 +159,8 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
         .table tbody td:first-child {
             text-align: center;
             font-weight: 700;
-            color: #667eea;
+            color: #ff003c;
+            text-shadow: 0 0 6px #ff003c99;
         }
 
         .table tbody td:nth-child(n+3):nth-child(-n+6) {
@@ -158,17 +169,20 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
         }
 
         strong {
-            color: #667eea;
+            color: #ff003c;
+            text-shadow: 0 0 6px #ff003c99;
         }
 
         .text-success {
-            color: #11998e !important;
+            color: #38ef7d !important;
             font-weight: 700;
+            text-shadow: 0 0 6px #38ef7d99;
         }
 
         .text-danger {
-            color: #fa709a !important;
+            color: #ff6b6b !important;
             font-weight: 700;
+            text-shadow: 0 0 6px #ff6b6b99;
         }
 
         .button-group {
@@ -181,13 +195,15 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
 
         .btn {
             padding: 0.9rem 2rem;
-            font-weight: 600;
+            font-weight: 700;
             border: none;
             border-radius: 8px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            color: #fff;
+            box-shadow: 0 0 20px #ff003c99, 0 0 40px #ff003c33;
         }
 
         .btn::before {
@@ -198,7 +214,8 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
             width: 0;
             height: 0;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
+            background: #ff003c55;
+            box-shadow: 0 0 40px #ff003c, 0 0 80px #ff003c99;
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
             z-index: 1;
@@ -207,6 +224,7 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
         .btn:hover::before {
             width: 300px;
             height: 300px;
+            filter: blur(8px);
         }
 
         .btn > * {
@@ -215,23 +233,29 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #ff003c;
             color: white;
+            text-shadow: 0 0 8px #fff, 0 0 20px #ff003c;
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            transform: scale(1.07) translateY(-3px);
+            box-shadow: 0 0 40px #ff003c, 0 0 80px #ff003c99;
+            filter: brightness(1.2);
         }
 
         .btn-secondary {
-            background: linear-gradient(135deg, #a8a8a8 0%, #6c6c6c 100%);
-            color: white;
+            background: #1a000a;
+            color: #ff003c;
+            border: 1.5px solid #ff003c;
+            box-shadow: 0 0 10px #ff003c44;
         }
 
         .btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(168, 168, 168, 0.4);
+            transform: scale(1.07) translateY(-3px);
+            background: #ff003c;
+            color: #fff;
+            box-shadow: 0 0 40px #ff003c, 0 0 80px #ff003c99;
         }
 
         .no-print {
@@ -252,7 +276,19 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
             .raport-container {
                 box-shadow: none;
                 background: white;
+                border: none;
                 animation: none;
+                color: black;
+            }
+
+            .raport-container h2,
+            .raport-container h5,
+            strong,
+            .student-info td:first-child,
+            .student-info strong,
+            .table thead th {
+                color: black !important;
+                text-shadow: none !important;
             }
 
             .table tbody tr {
@@ -266,14 +302,32 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
             }
         }
 
+        @keyframes neonPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) rotate(-10deg);
+                box-shadow: 0 0 0 #ff003c00;
+            }
+            80% {
+                opacity: 1;
+                transform: scale(1.05) rotate(2deg);
+                box-shadow: 0 0 80px #ff003c, 0 0 120px #ff003c99;
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+                box-shadow: 0 0 40px #ff003c, 0 0 80px #ff003c44;
+            }
+        }
+
         @keyframes slideUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(30px) scale(0.95);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
@@ -291,16 +345,18 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                filter: blur(8px);
             }
             to {
                 opacity: 1;
+                filter: blur(0);
             }
         }
 
         @keyframes rowFadeIn {
             from {
                 opacity: 0;
-                transform: translateX(-10px);
+                transform: translateX(-20px);
             }
             to {
                 opacity: 1;

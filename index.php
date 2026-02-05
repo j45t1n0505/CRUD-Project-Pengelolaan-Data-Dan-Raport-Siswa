@@ -22,10 +22,11 @@ if (!isset($_SESSION['user'])) {
         }
 
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0d0d0d;
             min-height: 100vh;
             padding: 2rem 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
         }
 
         .container {
@@ -34,20 +35,23 @@ if (!isset($_SESSION['user'])) {
 
         /* Header Animation */
         .header-section {
-            animation: slideDown 0.6s ease-out;
-            background: rgba(255, 255, 255, 0.95);
+            animation: neonPop 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            background: rgba(20, 0, 0, 0.95);
             padding: 2rem;
             border-radius: 15px;
             margin-bottom: 2rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 40px 5px #ff003c, 0 0 80px 10px #ff003c44;
             backdrop-filter: blur(10px);
+            border: 2px solid #ff003c;
         }
 
         h2 {
-            color: #333;
+            color: #ff003c;
             font-weight: 700;
             font-size: 2.5rem;
             margin-bottom: 0;
+            text-shadow: 0 0 8px #ff003c, 0 0 20px #ff003c99;
+            letter-spacing: 1px;
         }
 
         /* Button Animations */
@@ -60,12 +64,15 @@ if (!isset($_SESSION['user'])) {
         .btn {
             border: none;
             padding: 0.7rem 1.5rem;
-            font-weight: 600;
+            font-weight: 700;
             border-radius: 8px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px #ff003c99, 0 0 40px #ff003c33;
             position: relative;
             overflow: hidden;
+            background: #ff003c;
+            color: #fff;
+            text-shadow: 0 0 8px #fff, 0 0 20px #ff003c;
         }
 
         .btn::before {
@@ -76,7 +83,8 @@ if (!isset($_SESSION['user'])) {
             width: 0;
             height: 0;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
+            background: #ff003c55;
+            box-shadow: 0 0 40px #ff003c, 0 0 80px #ff003c99;
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
         }
@@ -84,30 +92,39 @@ if (!isset($_SESSION['user'])) {
         .btn:hover::before {
             width: 300px;
             height: 300px;
+            filter: blur(8px);
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 25px rgba(0, 0, 0, 0.2);
+            transform: scale(1.08) translateY(-4px);
+            box-shadow: 0 0 40px #ff003c, 0 0 80px #ff003c99;
+            filter: brightness(1.2);
         }
 
         .btn-success {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            background: #11998e;
+            box-shadow: 0 0 20px #11998e99, 0 0 40px #11998e33;
+        }
+
+        .btn-success:hover {
+            box-shadow: 0 0 40px #11998e, 0 0 80px #11998e99;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #ff003c;
+            box-shadow: 0 0 20px #ff003c99, 0 0 40px #ff003c33;
         }
 
         /* Table Animations */
         .table-container {
             animation: fadeIn 0.8s ease-out 0.2s both;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(20, 0, 0, 0.95);
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 40px 5px #ff003c, 0 0 80px 10px #ff003c44;
             overflow: hidden;
             backdrop-filter: blur(10px);
+            border: 2px solid #ff003c;
         }
 
         .table {
@@ -129,19 +146,21 @@ if (!isset($_SESSION['user'])) {
         .table tbody tr:nth-child(n+7) { animation-delay: 0.4s; }
 
         .table tbody tr:hover {
-            background-color: #f0f4ff !important;
+            background-color: rgba(255, 0, 60, 0.1) !important;
             transform: scale(1.01);
-            box-shadow: inset 0 0 10px rgba(102, 126, 234, 0.1);
+            box-shadow: inset 0 0 10px rgba(255, 0, 60, 0.2);
         }
 
         .table-dark {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            background: rgba(255, 0, 60, 0.1) !important;
         }
 
         .table thead th {
             border: none;
             font-weight: 700;
             letter-spacing: 0.5px;
+            color: #ff003c;
+            background-color: rgba(255, 0, 60, 0.1);
         }
 
         /* Button in Table */
@@ -154,16 +173,19 @@ if (!isset($_SESSION['user'])) {
         .btn-warning {
             background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
             border: none;
+            color: white;
         }
 
         .btn-danger {
             background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
             border: none;
+            color: white;
         }
 
         .btn-info {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             border: none;
+            color: white;
         }
 
         .btn-sm {
@@ -186,12 +208,32 @@ if (!isset($_SESSION['user'])) {
             }
         }
 
+        @keyframes neonPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) rotate(-10deg);
+                box-shadow: 0 0 0 #ff003c00;
+            }
+            80% {
+                opacity: 1;
+                transform: scale(1.05) rotate(2deg);
+                box-shadow: 0 0 80px #ff003c, 0 0 120px #ff003c99;
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+                box-shadow: 0 0 40px #ff003c, 0 0 80px #ff003c44;
+            }
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                filter: blur(8px);
             }
             to {
                 opacity: 1;
+                filter: blur(0);
             }
         }
 
@@ -223,16 +265,18 @@ if (!isset($_SESSION['user'])) {
             align-items: center;
             gap: 1rem;
             font-size: 0.95rem;
-            color: #666;
+            color: #ff003c;
+            text-shadow: 0 0 6px #ff003c99;
         }
 
         .user-badge {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #ff003c;
             color: white;
             padding: 0.4rem 0.8rem;
             border-radius: 6px;
             font-weight: 600;
             font-size: 0.85rem;
+            box-shadow: 0 0 10px #ff003c99;
         }
 
         /* Responsive */

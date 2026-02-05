@@ -31,38 +31,46 @@ if (isset($_POST['simpan'])) {
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0d0d0d;
             min-height: 100vh;
             padding: 2rem 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             align-items: center;
+            overflow-x: hidden;
         }
 
         .form-container {
-            animation: slideUp 0.6s ease-out;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
+            animation: neonPop 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            background: rgba(20, 0, 0, 0.95);
+            border-radius: 18px;
             padding: 3rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 40px 5px #ff003c, 0 0 80px 10px #ff003c44, 0 20px 60px rgba(0,0,0,0.7);
             backdrop-filter: blur(10px);
-            max-width: 500px;
+            max-width: 520px;
             width: 100%;
             margin: 0 auto;
+            border: 2px solid #ff003c;
         }
 
         h3 {
-            color: #333;
+            color: #ff003c;
             font-weight: 700;
             margin-bottom: 2rem;
-            font-size: 1.8rem;
+            font-size: 2rem;
             text-align: center;
-            animation: fadeIn 0.6s ease-out;
+            text-shadow: 0 0 8px #ff003c, 0 0 20px #ff003c99, 0 0 40px #fff0;
+            letter-spacing: 2px;
+            animation: neonText 1.2s ease-in-out alternate infinite;
         }
 
         .form-group {
             margin-bottom: 1.5rem;
-            animation: formSlide 0.6s ease-out backwards;
+            animation: formSlide 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) backwards;
+            background: rgba(30,0,0,0.3);
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ff003c33;
+            padding: 1rem 1rem 0.5rem 1rem;
         }
 
         .form-group:nth-child(1) { animation-delay: 0.1s; }
@@ -72,26 +80,31 @@ if (isset($_POST['simpan'])) {
 
         label {
             font-weight: 600;
-            color: #555;
+            color: #ff003c;
             margin-bottom: 0.7rem;
             display: block;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            text-shadow: 0 0 6px #ff003c99;
+            letter-spacing: 1px;
         }
 
         .form-control, .form-select {
-            border: 2px solid #e0e0e0;
+            border: 2px solid #ff003c;
             border-radius: 8px;
             padding: 0.8rem 1rem;
             font-size: 1rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: #1a000a;
+            color: #fff;
+            box-shadow: 0 0 10px #ff003c33 inset;
         }
 
         .form-control:focus, .form-select:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
-            transform: translateY(-2px);
-            background-color: white;
+            border-color: #fff;
+            box-shadow: 0 0 0 0.2rem #ff003c99, 0 0 10px #ff003c99;
+            transform: scale(1.03) translateY(-2px);
+            background-color: #2a001a;
+            color: #fff;
         }
 
         textarea.form-control {
@@ -108,7 +121,7 @@ if (isset($_POST['simpan'])) {
 
         .btn {
             padding: 0.9rem 1.8rem;
-            font-weight: 600;
+            font-weight: 700;
             border: none;
             border-radius: 8px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -117,6 +130,10 @@ if (isset($_POST['simpan'])) {
             text-align: center;
             position: relative;
             overflow: hidden;
+            background: #ff003c;
+            color: #fff;
+            box-shadow: 0 0 20px #ff003c99, 0 0 40px #ff003c33;
+            text-shadow: 0 0 8px #fff, 0 0 20px #ff003c;
         }
 
         .btn::before {
@@ -127,7 +144,8 @@ if (isset($_POST['simpan'])) {
             width: 0;
             height: 0;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
+            background: #ff003c55;
+            box-shadow: 0 0 40px #ff003c, 0 0 80px #ff003c99;
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
             z-index: 1;
@@ -136,6 +154,7 @@ if (isset($_POST['simpan'])) {
         .btn:hover::before {
             width: 300px;
             height: 300px;
+            filter: blur(8px);
         }
 
         .btn > * {
@@ -144,23 +163,26 @@ if (isset($_POST['simpan'])) {
         }
 
         .btn-success {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            color: white;
+            background: #ff003c;
+            color: #fff;
+            box-shadow: 0 0 20px #ff003c99, 0 0 40px #ff003c33;
         }
-
         .btn-success:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(17, 153, 142, 0.4);
+            transform: scale(1.07) translateY(-3px) rotate(-2deg);
+            box-shadow: 0 0 40px #ff003c, 0 0 80px #ff003c99;
+            filter: brightness(1.2);
         }
-
         .btn-secondary {
-            background: linear-gradient(135deg, #a8a8a8 0%, #6c6c6c 100%);
-            color: white;
+            background: #1a000a;
+            color: #ff003c;
+            border: 1.5px solid #ff003c;
+            box-shadow: 0 0 10px #ff003c44;
         }
-
         .btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(168, 168, 168, 0.4);
+            transform: scale(1.07) translateY(-3px) rotate(2deg);
+            background: #ff003c;
+            color: #fff;
+            box-shadow: 0 0 40px #ff003c, 0 0 80px #ff003c99;
         }
 
         .back-link {
@@ -168,36 +190,68 @@ if (isset($_POST['simpan'])) {
             text-align: center;
             margin-top: 1.5rem;
             animation: fadeIn 0.8s ease-out 0.6s backwards;
+            color: #ff003c;
+            text-shadow: 0 0 8px #ff003c, 0 0 20px #ff003c99;
+        }
+        /* Neon Animations */
+        @keyframes neonPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) rotate(-10deg);
+                box-shadow: 0 0 0 #ff003c00;
+            }
+            80% {
+                opacity: 1;
+                transform: scale(1.05) rotate(2deg);
+                box-shadow: 0 0 80px #ff003c, 0 0 120px #ff003c99;
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+                box-shadow: 0 0 40px #ff003c, 0 0 80px #ff003c44;
+            }
+        }
+        @keyframes neonText {
+            0% {
+                text-shadow: 0 0 8px #ff003c, 0 0 20px #ff003c99, 0 0 40px #fff0;
+            }
+            100% {
+                text-shadow: 0 0 20px #ff003c, 0 0 40px #ff003c99, 0 0 80px #ff003c;
+            }
         }
 
         @keyframes slideUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(30px) scale(0.95);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                filter: blur(8px);
             }
             to {
                 opacity: 1;
+                filter: blur(0);
             }
         }
 
         @keyframes formSlide {
             from {
                 opacity: 0;
-                transform: translateX(-20px);
+                transform: translateX(-40px) scale(0.95) skewY(-2deg);
+                filter: blur(8px);
             }
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: translateX(0) scale(1) skewY(0deg);
+                filter: blur(0);
             }
         }
 

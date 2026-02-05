@@ -44,31 +44,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
-<body style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height:100vh; display:flex; align-items:center; justify-content:center;">
-    <div class="card p-4" style="width: 380px; border-radius:12px; box-shadow:0 8px 30px rgba(0,0,0,0.15);">
-        <h4 class="mb-3 text-center">Masuk ke Aplikasi</h4>
+<body style="background: #0d0d0d; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow-x:hidden;">
+    <div class="card p-4" style="width: 380px; border-radius:12px; box-shadow:0 0 40px 5px #ff003c, 0 0 80px 10px #ff003c44; border:2px solid #ff003c; background:#1a000a;">
+        <h4 class="mb-3 text-center" style="color: #ff003c; text-shadow: 0 0 8px #ff003c, 0 0 20px #ff003c99; letter-spacing:2px;">Selamat Datang Di Website Pengelolaan Data Siswa <br> SMK Al - Madani <br></h4>
         <?php if ($error): ?>
             <div class="alert alert-danger"><?php echo $error; ?></div>
         <?php endif; ?>
         <form method="post">
             <div class="mb-3">
-                <label class="form-label">Username</label>
-                <input type="text" name="username" class="form-control" required>
+                <label class="form-label" style="color: #ff003c; text-shadow: 0 0 6px #ff003c99;">Username</label>
+                <input type="text" name="username" class="form-control" style="border:2px solid #ff003c; background:#1a000a; color:#fff; box-shadow:0 0 10px #ff003c33 inset;" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">Password</label>
-                <input type="password" name="password" class="form-control password-input" required>
+                <label class="form-label" style="color: #ff003c; text-shadow: 0 0 6px #ff003c99;">Password</label>
+                <input type="password" name="password" class="form-control password-input" style="border:2px solid #ff003c; background:#1a000a; color:#fff; box-shadow:0 0 10px #ff003c33 inset;" required>
                 <div class="form-check mt-1">
                     <input class="form-check-input" type="checkbox" id="showPasswordLogin">
-                    <label class="form-check-label" for="showPasswordLogin">Tampilkan password</label>
+                    <label class="form-check-label" for="showPasswordLogin" style="color:#ff003c;">Tampilkan password</label>
                 </div>
             </div>
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary" style="background: #ff003c; color:#fff; box-shadow:0 0 20px #ff003c99, 0 0 40px #ff003c33; text-shadow:0 0 8px #fff, 0 0 20px #ff003c; font-weight:700; border:none; transition:all 0.3s; position:relative; overflow:hidden;">LOGIN</button>
             </div>
         </form>
         <hr>
-        <small class="text-muted">Gunakan akun admin default jika baru install: <strong>admin / admin123</strong>. Jalankan <code>setup_users.php</code> jika belum membuat tabel users.</small>
     </div>
 </body>
 <script>

@@ -68,123 +68,172 @@ $users = mysqli_query($koneksi, "SELECT id, username, name, role, created_at FRO
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0d0d0d;
             min-height: 100vh;
             padding: 2rem 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
         }
 
         .header-section {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(20, 0, 0, 0.95);
             padding: 2rem;
             border-radius: 15px;
             margin-bottom: 2rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 40px 5px #ff003c, 0 0 80px 10px #ff003c44;
+            border: 2px solid #ff003c;
         }
 
         h2 {
-            color: #333;
+            color: #ff003c;
             font-weight: 700;
+            text-shadow: 0 0 8px #ff003c, 0 0 20px #ff003c99;
         }
 
         .card {
             border: none;
             border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 30px 3px #ff003c, 0 0 60px 6px #ff003c33;
             margin-bottom: 2rem;
+            background: rgba(20, 0, 0, 0.95);
+            border: 2px solid #ff003c;
         }
 
         .card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #ff003c;
             color: white;
             border-radius: 12px 12px 0 0 !important;
             font-weight: 600;
+            text-shadow: 0 0 8px rgba(0,0,0,0.3);
+            box-shadow: 0 0 10px #ff003c99;
+        }
+
+        .card-body {
+            background: rgba(20, 0, 0, 0.95);
+            color: #fff;
         }
 
         .form-control, .form-select {
             border-radius: 8px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #ff003c;
             transition: all 0.3s ease;
+            background-color: #1a000a;
+            color: #fff;
+            box-shadow: 0 0 10px #ff003c33 inset;
         }
 
         .form-control:focus, .form-select:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+            border-color: #fff;
+            box-shadow: 0 0 0 0.2rem #ff003c99, 0 0 10px #ff003c99;
+            background-color: #2a001a;
         }
 
         .btn {
             border-radius: 8px;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 0 30px #ff003c99;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #ff003c;
             border: none;
+            color: #fff;
+            box-shadow: 0 0 20px #ff003c99;
+        }
+
+        .btn-primary:hover {
+            background: #ff003c;
+            box-shadow: 0 0 40px #ff003c, 0 0 80px #ff003c99;
+            filter: brightness(1.2);
         }
 
         .btn-success {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            background: #11998e;
             border: none;
+            color: #fff;
+            box-shadow: 0 0 20px #11998e99;
         }
 
         .btn-danger {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            background: #ff6b6b;
             border: none;
+            color: #fff;
+            box-shadow: 0 0 20px #ff6b6b99;
         }
 
         .btn-warning {
             background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
             border: none;
+            color: #fff;
         }
 
         .table {
             margin-bottom: 0;
+            color: #fff;
         }
 
         .table thead th {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #ff003c;
             color: white;
             border: none;
             font-weight: 700;
             padding: 1.2rem;
+            text-shadow: 0 0 8px rgba(0,0,0,0.3);
         }
 
         .table tbody tr {
             transition: all 0.3s ease;
+            background-color: rgba(255, 0, 60, 0.05);
         }
 
         .table tbody tr:hover {
-            background-color: #f8f9fa;
+            background-color: rgba(255, 0, 60, 0.15);
             transform: scale(1.01);
+            box-shadow: inset 0 0 10px rgba(255, 0, 60, 0.2);
         }
 
         .role-badge {
             padding: 0.4rem 0.8rem;
             border-radius: 6px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.85rem;
+            text-shadow: 0 0 6px rgba(0,0,0,0.3);
         }
 
         .role-admin {
-            background: #ff6b6b;
+            background: #ff003c;
             color: white;
+            box-shadow: 0 0 10px #ff003c99;
         }
 
         .role-user {
             background: #4ecdc4;
             color: white;
+            box-shadow: 0 0 10px #4ecdc499;
         }
 
         .alert {
             border-radius: 8px;
-            border: none;
+            border: 2px solid #ff003c;
             margin-bottom: 1.5rem;
+            background: rgba(255, 0, 60, 0.1);
+            color: #ff003c;
+            text-shadow: 0 0 6px #ff003c99;
+            box-shadow: 0 0 10px #ff003c33;
+        }
+
+        .alert-success {
+            border-color: #38ef7d !important;
+            background: rgba(56, 239, 125, 0.1) !important;
+            color: #38ef7d !important;
+            text-shadow: 0 0 6px #38ef7d99 !important;
         }
 
         .form-group {
