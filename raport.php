@@ -344,7 +344,7 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
     <div class="raport-container">
         <div class="header-raport">
             <h2><i class="fas fa-file-pdf"></i> Laporan Hasil Belajar (E-Raport)</h2>
-            <h5>SMK Teknologi Informatika</h5>
+            <h5>SMK Al - Madani Pontianak Tenggara</h5>
         </div>
 
         <hr>
