@@ -371,10 +371,10 @@ if (!isset($_SESSION['user'])) {
                         while ($row = mysqli_fetch_assoc($result)) {
                         ?>
                         <tr>
-                            <td class="text-center"><strong><?php echo $no++; ?></strong></td>
-                            <td><?php echo $row['nim']; ?></td>
-                            <td><strong><?php echo $row['nama']; ?></strong></td>
-                            <td><?php echo $row['jurusan']; ?></td>
+                            <td class="text-center" style="color: white;"><strong><?php echo $no++; ?></strong></td>
+                            <td style="color: white;"><?php echo $row['nim']; ?></td>
+                            <td style="color: white;"><strong><?php echo $row['nama']; ?></strong></td>
+                            <td style="color: white;"><?php echo $row['jurusan']; ?></td>
                             <td class="text-center">
                                 <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm" title="Edit Data">
                                     <i class="fas fa-edit"></i> Edit

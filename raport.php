@@ -413,11 +413,11 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
                 </tr>
                 <tr>
                     <td><i class="fas fa-id-card"></i> NIM</td>
-                    <td>: <?php echo $dataSiswa['nim']; ?></td>
+                    <td style="color: white;">: <?php echo $dataSiswa['nim']; ?></td>
                 </tr>
                 <tr>
                     <td><i class="fas fa-graduation-cap"></i> Jurusan</td>
-                    <td>: <?php echo $dataSiswa['jurusan']; ?></td>
+                    <td style="color: white;">: <?php echo $dataSiswa['jurusan']; ?></td>
                 </tr>
             </table>
         </div>
@@ -464,12 +464,12 @@ $dataSiswa = mysqli_fetch_assoc($querySiswa);
                                 $warna = ($nilai_akhir >= $row['kkm']) ? "text-success" : "text-danger";
                         ?>
                         <tr class="text-center">
-                            <td><?php echo $no++; ?></td>
-                            <td class="text-start"><?php echo $row['nama_mapel']; ?></td>
-                            <td><?php echo $row['kkm']; ?></td>
-                            <td><?php echo $row['tugas']; ?></td>
-                            <td><?php echo $row['uts']; ?></td>
-                            <td><?php echo $row['uas']; ?></td>
+                            <td style="color: white;"><?php echo $no++; ?></td>
+                            <td class="text-start" style="color: white;"><?php echo $row['nama_mapel']; ?></td>
+                            <td style="color: white;"><?php echo $row['kkm']; ?></td>
+                            <td style="color: white;"><?php echo $row['tugas']; ?></td>
+                            <td style="color: white;"><?php echo $row['uts']; ?></td>
+                            <td style="color: white;"><?php echo $row['uas']; ?></td>
                             <td><strong><?php echo number_format($nilai_akhir, 1); ?></strong></td>
                             <td><strong><?php echo $grade; ?></strong></td>
                             <td class="fw-bold <?php echo $warna; ?>"><?php echo $ket; ?></td>
